@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { v4 } from "uuid";
 
 const TODO_APP_STORAGE_KEY = 'TODO_APP'
-const todoListStorage = (JSON.parse(localStorage.getItem(TODO_APP_STORAGE_KEY)) ? JSON.parse(localStorage.getItem(TODO_APP_STORAGE_KEY)) : []);
+const todoListStorage = JSON.parse(localStorage.getItem(TODO_APP_STORAGE_KEY));
 
 function App() {
-  const [todoList, setTodoList] = useState(todoListStorage);
+  const [todoList, setTodoList] = useState(todoListStorage ?? []);
   const [textInput, setTextInput] = useState("");
 
   useEffect(() => {

@@ -15,6 +15,7 @@ function App() {
     localStorage.setItem(TODO_APP_STORAGE_KEY, JSON.stringify(todoList));
   }, [todoList]);
 
+
   const onTextInputChange = (e) => {
     setTextInput(e.target.value);
   };

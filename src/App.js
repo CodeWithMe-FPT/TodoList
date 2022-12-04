@@ -1,40 +1,11 @@
 import TodoList from "./components/TodoList";
 import Textfield from "@atlaskit/textfield";
 import Button from "@atlaskit/button";
-import { useState, useEffect } from "react";
-import { v4 } from "uuid";
-
-const TODO_APP_STORAGE_KEY = 'TODO_APP'
-const todoListStorage = JSON.parse(localStorage.getItem(TODO_APP_STORAGE_KEY));
-
+import { useStore, actions } from "./store";
 function App() {
-  const [todoList, setTodoList] = useState(todoListStorage ?? []);
-  const [textInput, setTextInput] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem(TODO_APP_STORAGE_KEY, JSON.stringify(todoList));
-  }, [todoList]);
-
-
-  const onTextInputChange = (e) => {
-    setTextInput(e.target.value);
-  };
-
-  const onAddBtnClick = (e) => {
-    setTodoList([
-      { id: v4(), name: textInput, isCompleted: false },
-      ...todoList,
-    ]);
-    setTextInput("");
-  };
-
-  const onCheckBtnClick = (id) => {
-    setTodoList((prevState) =>
-      prevState.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: true } : todo
-      )
-    );
-  };
+  const [state, dispatch] = useStore();
+  const { todoList, textInput } = state;
 
   return (
     <>
@@ -46,15 +17,20 @@ function App() {
           <Button
             isDisabled={!textInput}
             appearance='primary'
-            onClick={onAddBtnClick}
+            onClick={() => {
+              dispatch(actions.setTodoList())
+            }}
           >
             Thêm
           </Button>
         }
         value={textInput}
-        onChange={onTextInputChange}
+        onChange={(e) => {
+          console.log(e.target.value);
+          dispatch(actions.setTodoInput(e.target.value))
+        }}
       ></Textfield>
-      <TodoList todoList={todoList} onCheckBtnClick={onCheckBtnClick} />
+      <TodoList />
     </>
   );
 }

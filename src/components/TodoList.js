@@ -1,6 +1,4 @@
-
 import Todo from "./Todo";
-import { useStore, actions } from "../store";
 import { memo } from "react";
 function TodoList({ todoList }) {
     console.log('re-render');

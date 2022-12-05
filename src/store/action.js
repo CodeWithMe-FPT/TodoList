@@ -1,5 +1,5 @@
 
-import { SET_TODO_INPUT, SET_TODO_LiST, COMPLETE_TODO } from "./constants";
+import { SET_TODO_INPUT, SET_TODO_LiST, COMPLETE_TODO, REMOVE_TODO } from "./constants";
 
 export const setTodoInput = payload => ({
     type: SET_TODO_INPUT,
@@ -13,6 +13,11 @@ export const setTodoList = () => ({
 export const completeTodo = payload => ({
     type: COMPLETE_TODO,
     payload,
+})
+
+export const removeTodo = payload => ({
+    type: REMOVE_TODO,
+    payload
 })
 
 

@@ -4,13 +4,6 @@ import { v4 } from "uuid";
 const TODO_APP_STORAGE_KEY = 'TODO_APP'
 const todoListStorage = JSON.parse(localStorage.getItem(TODO_APP_STORAGE_KEY));
 
-// const [todoList, setTodoList] = useState(todoListStorage ?? []);
-// const [textInput, setTextInput] = useState("");
-
-// useEffect(() => {
-//   localStorage.setItem(TODO_APP_STORAGE_KEY, JSON.stringify(todoList));
-// }, [todoList]);
-
 export const initState = {
     todoList: todoListStorage ? todoListStorage : [],
     textInput: "",

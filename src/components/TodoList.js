@@ -1,9 +1,9 @@
-import React from "react";
+
 import Todo from "./Todo";
 import { useStore, actions } from "../store";
-export default function TodoList() {
-    const [state, dispatch] = useStore();
-    const todoList = state.todoList;
+import { memo } from "react";
+function TodoList({ todoList }) {
+    console.log('re-render');
     return (
         <>
             {todoList.map((todo) => (
@@ -12,3 +12,4 @@ export default function TodoList() {
         </>
     );
 }
+export default memo(TodoList) 

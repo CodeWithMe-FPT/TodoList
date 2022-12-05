@@ -33,7 +33,6 @@ const ButtonStyled = styled(Button)`
 
 
 export default function Todo({ todo }) {
-
   const [state, dispatch] = useStore();
 
   const a = (

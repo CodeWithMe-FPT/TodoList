@@ -30,7 +30,7 @@ function App() {
           dispatch(actions.setTodoInput(e.target.value))
         }}
       ></Textfield>
-      <TodoList />
+      {(state.todoList.length !== 0) && <TodoList todoList={state.todoList} />}
     </>
   );
 }
